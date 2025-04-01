@@ -119,7 +119,9 @@ class MainActivity : ComponentActivity() {
         setContent {
             Aula04JetPackComposeTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    MessageCard(Message("Android", "Jetpack Compose"))
+                    Surface(modifier = Modifier.padding(innerPadding)){
+                        Conversation(messages = SampleData.conversationSample)
+                    }
                 }
             }
         }
@@ -215,6 +217,11 @@ fun Conversation(messages: List<Message>) {
 }
 
 @Preview
+@Preview(
+    uiMode = Configuration.UI_MODE_NIGHT_YES,
+    showBackground = true,
+    name = "Dark Mode"
+)
 @Composable
 fun PreviewConversation() {
     Aula04JetPackComposeTheme {
